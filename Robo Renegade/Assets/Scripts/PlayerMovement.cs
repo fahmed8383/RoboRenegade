@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
             dodgeValid = false;
             dodging = true;
             animator.SetBool("Dodge", true);
+            FindObjectOfType<AudioManager>().Play("Dodge");
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime * 20);
             Invoke("EndDodge", 0.2f);
             Invoke("ResetDodgeTimer", 2);

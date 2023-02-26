@@ -547,6 +547,11 @@ MonoBehaviour:
     volume: 0.15
     loop: 1
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 220da3ef63156ad4089a28f15570ccee, type: 3}
+    name: Dodge
+    volume: 0.5
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1034775276
 Transform:
   m_ObjectHideFlags: 0
@@ -662,7 +667,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &1185949791
 GameObject:
