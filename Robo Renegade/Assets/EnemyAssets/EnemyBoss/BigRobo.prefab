@@ -129,7 +129,7 @@ MonoBehaviour:
   atkInterval: 0.4
   moveSpeed: 1
   freezeDuration: 2
-  dropRate: 0.5
+  dropRate: 1
   expItem: {fileID: 4465199462756283069, guid: 3a59d920ecf28ea49ae2852137cc818e, type: 3}
   deathSound: {fileID: 2284947948665037568}
   rb: {fileID: 2284947948665037570}
