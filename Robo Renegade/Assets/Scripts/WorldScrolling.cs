@@ -16,8 +16,8 @@ public class WorldScrolling : MonoBehaviour
 
     [SerializeField] int terrainTileVerticalCount;
 
-    [SerializeField] int fieldOfVisionHeight = 3;
-    [SerializeField] int fieldOfVisionWidth = 3;
+    [SerializeField] int fieldOfVisionHeight = 100;
+    [SerializeField] int fieldOfVisionWidth = 100;
 
 
     private void Awake()
