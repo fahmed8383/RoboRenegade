@@ -35,6 +35,7 @@ public class GameState : MonoBehaviour
         if(collision.gameObject.name == "health_pack(Clone)")
         {
             Heal();
+            FindObjectOfType<AudioManager>().Play("Heal");
             Destroy(collision.gameObject);
         }
     }
