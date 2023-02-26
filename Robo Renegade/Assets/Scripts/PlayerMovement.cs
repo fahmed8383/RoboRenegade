@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
+    public SpriteRenderer sprite;
     public Animator animator;
+    public GameState gs;
 
     private Vector2 movement;
     private bool dodging = false;
@@ -26,6 +28,12 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime * 20);
             Invoke("EndDodge", 0.2f);
             Invoke("ResetDodgeTimer", 2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(FlashDamageColor());
+            gs.TakeDamage(1);
         }
 
         movement = Vector2.ClampMagnitude(movement, 1);
@@ -52,6 +60,13 @@ public class PlayerMovement : MonoBehaviour
     private void ResetDodgeTimer()
     {
         dodgeValid = true;
+    }
+
+    private IEnumerator FlashDamageColor()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
     }
 
 }
