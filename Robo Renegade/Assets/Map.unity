@@ -989,6 +989,7 @@ MonoBehaviour:
   chunks:
   - {fileID: 8905320867137364086, guid: 1b1bdf55dc9edfe47bbb85ea533191cd, type: 3}
   - {fileID: 2484065739386667312, guid: 2d3c3c8b35eb5864cb45fbebc3445be9, type: 3}
+  consumeables: {fileID: 1884052675818768284, guid: f67a88e4f531fd8448db7808cc066571, type: 3}
 --- !u!1 &1486119231
 GameObject:
   m_ObjectHideFlags: 0

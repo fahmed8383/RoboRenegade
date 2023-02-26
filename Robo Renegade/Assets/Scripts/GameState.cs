@@ -22,4 +22,20 @@ public class GameState : MonoBehaviour
         health -= damage;
         healthBar.SetHealth(health);
     }
+
+    public void Heal()
+    {
+        health = Mathf.Min(10, health + 2);
+        healthBar.SetHealth(health);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if(collision.gameObject.name == "health_pack(Clone)")
+        {
+            Heal();
+            Destroy(collision.gameObject);
+        }
+    }
 }

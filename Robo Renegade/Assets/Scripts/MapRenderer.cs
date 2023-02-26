@@ -8,6 +8,7 @@ public class MapRenderer : MonoBehaviour
 
     public Transform player;
     public List<GameObject> chunks;
+    public GameObject consumeables;
 
     private const int chunkSize = 26;
 
@@ -20,8 +21,7 @@ public class MapRenderer : MonoBehaviour
     void Start()
     {
         Vector3 pos = player.position;
-        GameObject newChunk = Instantiate(chunks[Mathf.RoundToInt(Random.Range(0, chunks.Count))], pos, Quaternion.Euler(0, 0, 0), this.transform);
-        chunksCreated.Add(pos, newChunk);
+        CreateChunk(pos);
     }
 
     // Update is called once per frame
@@ -32,12 +32,21 @@ public class MapRenderer : MonoBehaviour
 
         if (currentXChunk != prevXChunk || currentYChunk != prevYChunk)
         {
-            Debug.Log("Rendering new chunks");
             HideChunks(prevXChunk, prevYChunk);
             RenderChunks(currentXChunk, currentYChunk);
             prevXChunk = currentXChunk;
             prevYChunk = currentYChunk;
         }
+    }
+
+    private void CreateChunk(Vector3 pos)
+    {
+        GameObject newChunk = Instantiate(chunks[Mathf.RoundToInt(Random.Range(0, chunks.Count))], pos, Quaternion.Euler(0, 0, 0), this.transform);
+        if (Random.value <= 1)
+        {
+            Instantiate(consumeables, newChunk.transform);
+        }
+        chunksCreated.Add(pos, newChunk);
     }
 
     private void RenderChunks(int currentXChunk, int currentYChunk)
@@ -49,8 +58,7 @@ public class MapRenderer : MonoBehaviour
                 Vector3 coords = new Vector3(x, y, 0);
                 if (!chunksCreated.ContainsKey(coords))
                 {
-                    GameObject newChunk = Instantiate(chunks[Mathf.RoundToInt(Random.Range(0, chunks.Count))], coords, Quaternion.Euler(0, 0, 0), this.transform);
-                    chunksCreated.Add(coords, newChunk);
+                    CreateChunk(coords);
                 } else
                 {
                     GameObject currChunk = chunksCreated[coords] as GameObject;
