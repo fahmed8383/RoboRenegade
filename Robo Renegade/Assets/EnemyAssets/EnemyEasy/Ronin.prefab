@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3440277837798369966}
   m_Layer: 0
   m_Name: Ronin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   atkInterval: 0.4
   moveSpeed: 1
   freezeDuration: 2
-  dropRate: 0.5
+  dropRate: 1
   expItem: {fileID: 8427489671738200659, guid: f1e5968d6b9acad47baf6d3c4b9f913b, type: 3}
   deathSound: {fileID: 8527920932438423921}
   rb: {fileID: 8527920932438423923}

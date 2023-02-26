@@ -81,10 +81,20 @@ public class enemyScript : MonoBehaviour
         }
     }
 
+    private IEnumerator FlashDamageColor()
+    {
+        rend.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        rend.color = Color.white;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // enemy possibly takes damage
-        //TakeDamage(10);
+        if (collision.gameObject.CompareTag("PlayerBullet")){
+            TakeDamage(10);
+            StartCoroutine(FlashDamageColor());
+        }
 
         // if evolved laser collides with enemy, set frozen = true
         //frozen = true;
