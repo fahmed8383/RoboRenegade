@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(FlashDamageColor());
             gs.TakeDamage(1);
+            FindObjectOfType<AudioManager>().Play("Damage");
         }
 
         movement = Vector2.ClampMagnitude(movement, 1);
