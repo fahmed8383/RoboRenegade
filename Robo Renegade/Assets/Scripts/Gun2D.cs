@@ -10,7 +10,7 @@ public class Gun2D : MonoBehaviour
 
     // Gun variables
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firingPoint;
+    // [SerializeField] private Transform firingPoint = this.transform;
 
     [Range(0.1f, 1f)]
     [SerializeField] private float fireRate = 0.5f;
@@ -75,8 +75,11 @@ public class Gun2D : MonoBehaviour
 
     private void Shoot()
     {
+        Transform firingPoint = this.transform;
         // GameObject bullet = 
         Instantiate(bulletPrefab, firingPoint.position, Quaternion.Euler(firingPoint.rotation.eulerAngles.x, firingPoint.rotation.eulerAngles.y, firingPoint.rotation.eulerAngles.z - 90f));
+        FindObjectOfType<AudioManager>().Play("BulletFire");
+
         // Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         // rb.AddForce(firingPoint.up * speed, ForceMode2D.Impulse);
     }
