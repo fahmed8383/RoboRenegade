@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnInterval: 2
-  radius: 11.5
+  radius: 12
   mediumDiffChance: 0.5
   enemyEasy: {fileID: 8527920932438423926, guid: 99b1795b30f1acb49990af60637a9028, type: 3}
   enemyMedium: {fileID: 3140169113020536927, guid: 3c1e17dbdaad11743b2bde8fd4e3a496, type: 3}

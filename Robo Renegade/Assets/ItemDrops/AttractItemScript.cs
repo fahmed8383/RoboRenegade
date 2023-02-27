@@ -7,10 +7,10 @@ public class AttractItemScript : MonoBehaviour
     private Transform target;
     public Rigidbody2D rb;
 
-    public float moveSpeed = 4;
+    private float moveSpeed = 6;
     private bool targetFound = false;
     private Vector2 moveDirection = new Vector2(0, 0);
-    public float EXPGain = 25;
+    public float PointsGain = 25; // generic point (EXP or HP)
 
     // Start is called before the first frame update
     void Start()
@@ -42,8 +42,17 @@ public class AttractItemScript : MonoBehaviour
         }
         else if (collision.attachedRigidbody && collision.attachedRigidbody.gameObject.name == "Player")
         {
-            //Debug.Log("exp gained");
             // Add EXP to player equal to EXPGain
+            if (gameObject.tag == "EXP")
+            {
+                // add EXP to player
+                Debug.Log("exp gained");
+            }
+            else if (gameObject.tag == "HP")
+            {
+                // add HP to player
+                Debug.Log("hp gained");
+            }
             Destroy(gameObject);
         }
     }
