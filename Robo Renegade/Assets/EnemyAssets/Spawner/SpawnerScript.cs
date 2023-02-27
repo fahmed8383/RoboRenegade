@@ -33,7 +33,6 @@ public class SpawnerScript : MonoBehaviour
         }
         else
         {
-            spawnBoss();
             spawnEnemy();
             timer = 0;
         }

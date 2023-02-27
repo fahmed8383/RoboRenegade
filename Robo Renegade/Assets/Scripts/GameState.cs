@@ -35,20 +35,9 @@ public class GameState : MonoBehaviour
         health = Mathf.Min(maxHealth, health + hpGain);
         healthBar.SetHealth(health);
     }
-
+    
     public void SetInvincible(bool inv)
     {
         invincible = inv;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.gameObject.name);
-        if(collision.gameObject.name == "health_pack(Clone)")
-        {
-            Heal();
-            FindObjectOfType<AudioManager>().Play("Heal");
-            Destroy(collision.gameObject);
-        }
     }
 }
