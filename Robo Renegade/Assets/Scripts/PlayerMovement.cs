@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         {
             dodgeValid = false;
             dodging = true;
+            gs.SetInvincible(true);
             animator.SetBool("Dodge", true);
             FindObjectOfType<AudioManager>().Play("Dodge");
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime * 20);
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     private void EndDodge()
     {
         dodging = false;
+        gs.SetInvincible(false);
         animator.SetBool("Dodge", false);
     }
 
