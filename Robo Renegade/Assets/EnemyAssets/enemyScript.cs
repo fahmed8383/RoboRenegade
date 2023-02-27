@@ -157,11 +157,4 @@ public class enemyScript : MonoBehaviour
             Debug.Log("exp drop");
         }
     }
-
-    private IEnumerator FlashDamageColor()
-    {
-        rend.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        rend.color = Color.white;
-    }
 }
