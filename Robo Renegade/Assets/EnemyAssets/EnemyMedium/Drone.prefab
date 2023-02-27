@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8246952639220992903}
   - component: {fileID: 4708493040652656535}
   - component: {fileID: 920657115089409089}
+  - component: {fileID: 3836533173271467884}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Enemy
@@ -284,3 +285,19 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0015362335, y: -0.00000072452855}
   m_Size: {x: 1.3980167, y: 0.7989245}
   m_Direction: 1
+--- !u!114 &3836533173271467884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3140169113020536927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b663146d7dfb94dce89c70c4911b1694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  bulletPrefab: {fileID: 3267639274264799712, guid: e5b3e5211f4454f2b8fa5be617aee6d1, type: 3}
+  firingPoint: {fileID: 0}
+  fireRate: 1

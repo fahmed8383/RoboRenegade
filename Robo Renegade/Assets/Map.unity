@@ -168,8 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  bulletPrefab: {fileID: 3267639274264799712, guid: e5b3e5211f4454f2b8fa5be617aee6d1, type: 3}
-  fireRate: 0.5
+  bulletPrefab: {fileID: 3267639274264799712, guid: 293d122637d0a4895a8ab75b8de1ffa6, type: 3}
+  fireRate: 1
 --- !u!4 &104064663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4412381335747186340, guid: ec49cb61c55afd34381f73972d713933, type: 3}
@@ -319,8 +319,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4289462350
+  m_fontColor: {r: 0.30588236, g: 0, b: 0.6745098, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
