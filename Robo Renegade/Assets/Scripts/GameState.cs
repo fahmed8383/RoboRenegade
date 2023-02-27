@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-
+    public static GameState instance;
+    public Transform playerTransform;
+    
     private static int maxHealth = 10;
     private static int health = 10;
 
@@ -21,5 +23,10 @@ public class GameState : MonoBehaviour
     {
         health -= damage;
         healthBar.SetHealth(health);
+    }
+
+    private void Awake()
+    {
+        instance = this;   
     }
 }
