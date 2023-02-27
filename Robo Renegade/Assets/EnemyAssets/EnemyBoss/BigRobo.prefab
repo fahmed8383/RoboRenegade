@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8464012331705296079}
   - component: {fileID: 4100263453082971929}
   - component: {fileID: 6174717224566418871}
+  - component: {fileID: 4945351887348144228}
   m_Layer: 0
   m_Name: BigRobo
   m_TagString: Untagged
@@ -297,3 +298,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039512af464bbbc4ca396c18cd4e4245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4945351887348144228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2284947948665037575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51dff9bbc71374a91a5185e06510f3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  lifeTime: 5

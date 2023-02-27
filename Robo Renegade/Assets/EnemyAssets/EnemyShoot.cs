@@ -5,15 +5,18 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
 
-    [SerializeField] private float speed = 2f;
+    [Range(1, 10)]
+    // 1 for med, 1 for boss
+    [SerializeField] private float speed;
 
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firingPoint;
+    private Transform firingPoint;
     private Transform target;
 
 
-    [Range(0.1f, 1f)]
-    [SerializeField] private float fireRate = 5f;
+    [Range(0.1f, 20f)]
+    // 6 for med, 0.3 for boss
+    [SerializeField] private float fireRate;
     private float fireTimer;
 
 
@@ -42,22 +45,9 @@ public class EnemyShoot : MonoBehaviour
     {
         target = GameObject.Find("Player").transform;
 
-        // Vector2 directionToTarget = target.position - transform.position;
-    
-        // float angle = Vector3.Angle(Vector3.right, directionToTarget);
-        // if(target.position.y < firingPoint.position.y) angle *= -1;
-        // Quaternion bulletRotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
-
         Quaternion bulletRotation = Quaternion.Euler(0, 0, angle);
-
-
-        // float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
-
-        // transform.localRotation = Quaternion.Euler(0, 0, angle);
-        // Vector3 dirToPlayer = (player.transform.position - enemy.transform.position);
-
 
         Instantiate(bulletPrefab, firingPoint.position, bulletRotation);
 
