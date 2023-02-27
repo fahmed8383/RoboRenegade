@@ -10,7 +10,7 @@ public class AttractItemScript : MonoBehaviour
     private float moveSpeed = 6;
     private bool targetFound = false;
     private Vector2 moveDirection = new Vector2(0, 0);
-    public float PointsGain = 25; // generic point (EXP or HP)
+    public int PointsGain = 25; // generic point (EXP or HP)
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +51,7 @@ public class AttractItemScript : MonoBehaviour
             else if (gameObject.tag == "HP")
             {
                 // add HP to player
+                collision.attachedRigidbody.gameObject.GetComponent<GameState>().Heal(PointsGain);
                 Debug.Log("hp gained");
             }
             Destroy(gameObject);

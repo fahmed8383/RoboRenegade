@@ -5,14 +5,15 @@ using UnityEngine;
 public class GameState : MonoBehaviour
 {
 
-    private static int maxHealth = 10;
-    private static int health = 10;
+    private static int maxHealth = 70;
+    private static int health;
 
     public HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(health);
     }
@@ -23,20 +24,11 @@ public class GameState : MonoBehaviour
         healthBar.SetHealth(health);
     }
 
-    public void Heal()
+    public void Heal(int hpGain)
     {
-        health = Mathf.Min(10, health + 2);
+        FindObjectOfType<AudioManager>().Play("Heal");
+        health = Mathf.Min(maxHealth, health + hpGain);
         healthBar.SetHealth(health);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.gameObject.name);
-        if(collision.gameObject.name == "health_pack(Clone)")
-        {
-            Heal();
-            FindObjectOfType<AudioManager>().Play("Heal");
-            Destroy(collision.gameObject);
-        }
-    }
 }
