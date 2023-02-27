@@ -7,6 +7,7 @@ public class GameState : MonoBehaviour
 
     private static int maxHealth = 70;
     private static int health;
+    private static bool invincible = false;
 
     public HealthBar healthBar;
 
@@ -20,8 +21,12 @@ public class GameState : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        healthBar.SetHealth(health);
+        if(!invincible)
+        {
+            health -= damage;
+            healthBar.SetHealth(health);
+            FindObjectOfType<AudioManager>().Play("Damage");
+        }
     }
 
     public void Heal(int hpGain)
@@ -30,5 +35,9 @@ public class GameState : MonoBehaviour
         health = Mathf.Min(maxHealth, health + hpGain);
         healthBar.SetHealth(health);
     }
-
+    
+    public void SetInvincible(bool inv)
+    {
+        invincible = inv;
+    }
 }

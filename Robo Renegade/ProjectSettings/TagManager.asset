@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Nanobots
   - PlayerBullet
+  - Terrain
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
