@@ -25,7 +25,7 @@ public class GameState : MonoBehaviour
     {
         if(!invincible)
         {
-            health -= damage;
+            health = Mathf.Max(0, health - damage);
             healthBar.SetHealth(health);
             FindObjectOfType<AudioManager>().Play("Damage");
         }
