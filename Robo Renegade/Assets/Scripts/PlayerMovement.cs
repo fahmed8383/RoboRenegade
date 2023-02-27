@@ -71,4 +71,18 @@ public class PlayerMovement : MonoBehaviour
         sprite.color = Color.white;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            StartCoroutine(FlashDamageColor());
+            gs.TakeDamage(1);
+            FindObjectOfType<AudioManager>().Play("Damage");
+        }
+        // if (collision.gameObject.CompareTag("PlayerBullet")){
+        //     Debug.Log("BulletCollision");
+        //     Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        // }
+    }
+
 }
