@@ -21,6 +21,7 @@ public class GameState : MonoBehaviour
     {
         health -= damage;
         healthBar.SetHealth(health);
+        FindObjectOfType<AudioManager>().Play("Damage");
     }
 
     public void Heal()
