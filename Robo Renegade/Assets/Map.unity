@@ -123,6 +123,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &17601746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17601747}
+  - component: {fileID: 17601748}
+  m_Layer: 0
+  m_Name: FiringPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &17601747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17601746}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.575, y: 0.094, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1695606823}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &17601748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17601746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551131699f35f415fad78c55fec4318f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  bulletPrefab: {fileID: 3267639274264799712, guid: e5b3e5211f4454f2b8fa5be617aee6d1, type: 3}
+  fireRate: 0.5
 --- !u!4 &104064663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4412381335747186340, guid: ec49cb61c55afd34381f73972d713933, type: 3}
@@ -557,8 +604,13 @@ MonoBehaviour:
     volume: 0.5
     loop: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: e994a5ec89fcf5648905a357e8264530, type: 3}
-    name: EnemyDeath
+  - clip: {fileID: 8300000, guid: 28e21484e9293be47b199b7d3be7fe9b, type: 3}
+    name: BulletFire
+    volume: 0.05
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3c656750bdfd2ef4b8c24748409d8bcb, type: 3}
+    name: Heal
     volume: 0.5
     loop: 0
     source: {fileID: 0}
@@ -994,6 +1046,7 @@ MonoBehaviour:
   chunks:
   - {fileID: 8905320867137364086, guid: 1b1bdf55dc9edfe47bbb85ea533191cd, type: 3}
   - {fileID: 2484065739386667312, guid: 2d3c3c8b35eb5864cb45fbebc3445be9, type: 3}
+  consumeables: {fileID: 1884052675818768284, guid: f67a88e4f531fd8448db7808cc066571, type: 3}
 --- !u!1 &1486119231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1253,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1952504123}
+  - {fileID: 17601747}
   m_Father: {fileID: 1236715306}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1304,7 +1358,7 @@ GameObject:
   - component: {fileID: 1952504124}
   m_Layer: 0
   m_Name: pistol_right
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
