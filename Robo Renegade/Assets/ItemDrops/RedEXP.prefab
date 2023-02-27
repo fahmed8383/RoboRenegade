@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4465199462756283064}
   m_Layer: 0
   m_Name: RedEXP
-  m_TagString: Untagged
+  m_TagString: EXP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

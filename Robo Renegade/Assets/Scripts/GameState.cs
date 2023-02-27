@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameState : MonoBehaviour
 {
 
-    private static int maxHealth = 10;
-    private static int health = 10;
+    private static int maxHealth = 70;
+    private static int health;
     private static bool invincible = false;
 
     public HealthBar healthBar;
@@ -14,6 +14,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(health);
     }
@@ -28,9 +29,10 @@ public class GameState : MonoBehaviour
         }
     }
 
-    public void Heal()
+    public void Heal(int hpGain)
     {
-        health = Mathf.Min(10, health + 2);
+        FindObjectOfType<AudioManager>().Play("Heal");
+        health = Mathf.Min(maxHealth, health + hpGain);
         healthBar.SetHealth(health);
     }
 

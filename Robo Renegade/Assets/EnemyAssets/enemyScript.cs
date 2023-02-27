@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class enemyScript : MonoBehaviour
 {
-    public float maxHP;
-    public float atk;
+    public int maxHP;
+    public int atk;
     public float atkInterval;
     public float moveSpeed;
     public float freezeDuration;
     public float dropRate; // float value between 0 and 1
     public GameObject expItem;
 
-    public AudioSource deathSound;
     public Rigidbody2D rb;
-    public Collider2D collBody, collArea;
     public SpriteRenderer rend;
     public Animator anim;
 
-    private float health;
+
+    private int health;
     private Vector2 moveDirection;
     private bool alive = true;
     private bool frozen = false;
@@ -36,7 +35,7 @@ public class enemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) // for testing purposes only
         {
             //FreezeEnemy();
             //Debug.Log("space pressed");
@@ -61,12 +60,12 @@ public class enemyScript : MonoBehaviour
     {
         // do damage at regular intervals
 
-        if (collision.attachedRigidbody && collision.attachedRigidbody.gameObject.name == "Player")
+        if (collision.attachedRigidbody && collision.attachedRigidbody.gameObject.tag == "Player")
         {
-            //TakeDamage(10);
+            //TakeDamage(100);
             if (timer == 0)
             {
-                // deal damage equal to its atk
+                collision.attachedRigidbody.gameObject.GetComponent<GameState>().TakeDamage(atk);
                 //Debug.Log("Damage");
                 timer += Time.deltaTime;
             }
@@ -93,7 +92,6 @@ public class enemyScript : MonoBehaviour
         // enemy possibly takes damage
         if (collision.gameObject.CompareTag("PlayerBullet")){
             TakeDamage(10);
-            StartCoroutine(FlashDamageColor());
         }
 
         // if evolved laser collides with enemy, set frozen = true
@@ -139,18 +137,14 @@ public class enemyScript : MonoBehaviour
 
     void Kill()
     {
-        deathSound.Play();
-        // insert death animation and sound effect
-        collBody.enabled = false;
-        collArea.enabled = false;
-        rend.enabled = false;
-
+        FindObjectOfType<AudioManager>().Play("EnemyDeath");
         DropEXP();
-        Destroy(gameObject, deathSound.clip.length);
+        Destroy(gameObject);
     }
 
-    public void TakeDamage(float dmg)
+    public void TakeDamage(int dmg)
     {
+        StartCoroutine(FlashDamageColor());
         health -= dmg;
     }
 
