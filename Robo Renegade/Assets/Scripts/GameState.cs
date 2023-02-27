@@ -20,7 +20,7 @@ public class GameState : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        health = Mathf.Max(0, health - damage);
         healthBar.SetHealth(health);
     }
 

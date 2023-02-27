@@ -94,8 +94,8 @@ public class enemyScript : MonoBehaviour
             TakeDamage(10);
         }
 
-        // if evolved laser collides with enemy, set frozen = true
-        //frozen = true;
+        // if evolved laser collides with enemy, call FreezeEnemy()
+        //FreezeEnemy()
     }
 
     void SetDirection()
@@ -154,7 +154,7 @@ public class enemyScript : MonoBehaviour
         {
             // drop exp item
             Instantiate(expItem, transform.position, transform.rotation);
-            Debug.Log("exp drop");
+            //Debug.Log("exp drop");
         }
     }
 }

@@ -12,7 +12,7 @@ public class SpawnerScript : MonoBehaviour
     public float radius;
     public float mediumDiffChance = 0.5f; // chance of spawning meduim enemies in medium difficulty
     private float timer = 0;
-    private int difficulty = 0;
+    public int difficulty;
 
     public GameObject enemyEasy;
     public GameObject enemyMedium;
@@ -21,6 +21,7 @@ public class SpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        difficulty = 0;
         spawnEnemy();
     }
 
@@ -41,14 +42,20 @@ public class SpawnerScript : MonoBehaviour
     void spawnEnemy()
     {
         // determine difficulty based on game duration
-        // before 2.5 mins
-        //spawnEasy(getSpawnPosition());
 
-        // after 2.5 min, before 5 min
-        spawnMedium(getSpawnPosition());
-
-        // after 5 min
-        //spawnHard(getSpawnPosition());
+        if (difficulty == 0) // easy, before 2.5 min
+        {
+            spawnEasy(getSpawnPosition());
+        }
+        else if (difficulty == 1) // medium, after 2.5 min till 5 min
+        {
+            // possibly change spawnRate
+            spawnMedium(getSpawnPosition());
+        }
+        else // hard, after 5 min
+        {
+            spawnHard(getSpawnPosition());
+        }
     }
 
     Vector3 getSpawnPosition()
@@ -82,7 +89,7 @@ public class SpawnerScript : MonoBehaviour
     }
 
     // to be called at 5 min of game duration
-    void spawnBoss()
+    public void spawnBoss()
     {
         Instantiate(enemyBoss, getSpawnPosition(), transform.rotation);
     }
