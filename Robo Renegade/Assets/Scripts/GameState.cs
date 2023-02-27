@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-
+    public static GameState instance;
+    public Transform playerTransform;
+    
     private static int maxHealth = 70;
     private static int health;
     private static bool invincible = false;
@@ -34,6 +36,11 @@ public class GameState : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Heal");
         health = Mathf.Min(maxHealth, health + hpGain);
         healthBar.SetHealth(health);
+    }
+
+    private void Awake()
+    {
+        instance = this;   
     }
     
     public void SetInvincible(bool inv)
