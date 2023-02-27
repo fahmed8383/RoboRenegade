@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8464012331705296079}
   - component: {fileID: 4100263453082971929}
   - component: {fileID: 6174717224566418871}
+  - component: {fileID: -7007123641825748866}
   m_Layer: 0
   m_Name: BigRobo
   m_TagString: Enemy
@@ -131,8 +132,6 @@ MonoBehaviour:
   dropRate: 1
   expItem: {fileID: 4465199462756283069, guid: 3a59d920ecf28ea49ae2852137cc818e, type: 3}
   rb: {fileID: 2284947948665037570}
-  collBody: {fileID: 8464012331705296079}
-  collArea: {fileID: 4100263453082971929}
   rend: {fileID: 2284947948665037581}
   anim: {fileID: 5067346303439941855}
 --- !u!95 &5067346303439941855
@@ -199,3 +198,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039512af464bbbc4ca396c18cd4e4245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7007123641825748866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2284947948665037575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b663146d7dfb94dce89c70c4911b1694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  bulletPrefab: {fileID: 3267639274264799712, guid: e5b3e5211f4454f2b8fa5be617aee6d1, type: 3}
+  fireRate: 0.3

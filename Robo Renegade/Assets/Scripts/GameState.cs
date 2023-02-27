@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-
+    public static GameState instance;
+    public Transform playerTransform;
+    
     private static int maxHealth = 70;
     private static int health;
+    private static bool invincible = false;
 
     public HealthBar healthBar;
 
@@ -20,8 +23,12 @@ public class GameState : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health = Mathf.Max(0, health - damage);
-        healthBar.SetHealth(health);
+        if(!invincible)
+        {
+            health = Mathf.Max(0, health - damage);
+            healthBar.SetHealth(health);
+            FindObjectOfType<AudioManager>().Play("Damage");
+        }
     }
 
     public void Heal(int hpGain)
@@ -31,4 +38,13 @@ public class GameState : MonoBehaviour
         healthBar.SetHealth(health);
     }
 
+    private void Awake()
+    {
+        instance = this;   
+    }
+    
+    public void SetInvincible(bool inv)
+    {
+        invincible = inv;
+    }
 }

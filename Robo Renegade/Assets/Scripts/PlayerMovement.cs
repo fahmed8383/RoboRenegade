@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         {
             dodgeValid = false;
             dodging = true;
+            gs.SetInvincible(true);
             animator.SetBool("Dodge", true);
             FindObjectOfType<AudioManager>().Play("Dodge");
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime * 20);
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     private void EndDodge()
     {
         dodging = false;
+        gs.SetInvincible(false);
         animator.SetBool("Dodge", false);
     }
 
@@ -73,11 +75,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "EnemyBullet")
         {
             StartCoroutine(FlashDamageColor());
             gs.TakeDamage(1);
-            FindObjectOfType<AudioManager>().Play("Damage");
         }
         // if (collision.gameObject.CompareTag("PlayerBullet")){
         //     Debug.Log("BulletCollision");
