@@ -159,7 +159,7 @@ public class enemyScript : MonoBehaviour
         {
             // drop exp item
             Instantiate(expItem, transform.position, transform.rotation);
-            //Debug.Log("exp drop");
+            // Debug.Log("exp drop");
         }
     }
 }

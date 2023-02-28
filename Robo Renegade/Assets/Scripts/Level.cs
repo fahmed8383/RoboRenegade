@@ -12,6 +12,7 @@ public class Level : MonoBehaviour
     List<UpgradeData> selectedUpgrades;
 
     [SerializeField] List<UpgradeData> acquiredUpgrades;
+    [SerializeField] List<UpgradeButton> invSlots;
 
     int TO_LEVEL_UP
     {
@@ -35,6 +36,7 @@ public class Level : MonoBehaviour
 
         acquiredUpgrades.Add(upgradeData);
         upgrades.Remove(upgradeData);
+        addItem(upgradeData);
     }
 
     public void CheckLevelUp() 
@@ -71,6 +73,10 @@ public class Level : MonoBehaviour
         }
 
         return upgradeList;
+    }
+
+    public void addItem(UpgradeData ability) {
+        invSlots[level-2].Set(ability);
     }
 }
 

@@ -6,6 +6,7 @@ public class GameState : MonoBehaviour
 {
     public static GameState instance;
     public Transform playerTransform;
+    public SpriteRenderer sprite;
     public GameObject gameOver;
     public GameObject gameWon;
 
@@ -29,6 +30,7 @@ public class GameState : MonoBehaviour
         {
             health = Mathf.Max(0, health - damage);
             healthBar.SetHealth(health);
+            StartCoroutine(FlashDamageColor());
             FindObjectOfType<AudioManager>().Play("Damage");
         }
         if(health == 0)
@@ -60,4 +62,12 @@ public class GameState : MonoBehaviour
         Time.timeScale = 0f;
         gameWon.SetActive(true);
     }
+    
+    private IEnumerator FlashDamageColor()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+    }
+
 }

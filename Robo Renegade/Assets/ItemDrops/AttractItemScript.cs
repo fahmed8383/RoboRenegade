@@ -46,13 +46,15 @@ public class AttractItemScript : MonoBehaviour
             if (gameObject.tag == "EXP")
             {
                 // add EXP to player
-                //Debug.Log("exp gained");
+                collision.attachedRigidbody.gameObject.GetComponent<Level>().AddExperience(500);
+
+                // Debug.Log("exp gained");
             }
             else if (gameObject.tag == "HP")
             {
                 // add HP to player
                 collision.attachedRigidbody.gameObject.GetComponent<GameState>().Heal(PointsGain);
-                //Debug.Log("hp gained");
+                // Debug.Log("hp gained");
             }
             Destroy(gameObject);
         }
