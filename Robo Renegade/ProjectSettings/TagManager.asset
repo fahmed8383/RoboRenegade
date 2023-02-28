@@ -11,6 +11,7 @@ TagManager:
   - PlayerBullet
   - Terrain
   - EnemyBullet
+  - LaserBeam
   layers:
   - Default
   - TransparentFX

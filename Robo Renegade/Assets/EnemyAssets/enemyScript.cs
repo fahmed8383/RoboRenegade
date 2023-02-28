@@ -78,6 +78,10 @@ public class enemyScript : MonoBehaviour
                 timer += Time.deltaTime;
             }
         }
+        if (collision.gameObject.CompareTag("LaserBeam")){
+            Debug.Log("LaserBeam Collision");
+            TakeDamage(100);
+        }
     }
 
     private IEnumerator FlashDamageColor()
