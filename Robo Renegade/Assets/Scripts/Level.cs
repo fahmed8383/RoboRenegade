@@ -7,8 +7,8 @@ public class Level : MonoBehaviour
     int level = 1;
     int experience = 0;
     int passiveLevel = 0;
-    int activeLevel = 0;
-    int buffLevel = 0;
+    static int activeLevel = 0;
+    static int buffLevel = 0;
     int evolutionLevel = 0;
     int numAbility = 0;
     [SerializeField] UpgradePanelManager upgradePanel;
@@ -57,6 +57,7 @@ public class Level : MonoBehaviour
                 break;
             case "BuffUpgrade":
                 buffLevel += 1;
+                PlayerMovement.moveSpeed += 0.3f;
                 // Debug.Log("buffLevel = " + buffLevel);
                 break;
             case "EvolutionUpgrade":
@@ -73,12 +74,8 @@ public class Level : MonoBehaviour
         return passiveLevel;
     }
 
-    public int getActiveLevel() {
-        return passiveLevel;
-    }
-
-    public int getBuffLevel() {
-        return passiveLevel;
+    public static int getActiveLevel() {
+        return activeLevel;
     }
 
     public int getEvolutionLevel() {

@@ -36,8 +36,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) && timeStopValid)
         {
-            StartCoroutine(StopTime());
-            StartCoroutine(StopTimeCooldown(10));
+            int cooldown = 11 - Level.getActiveLevel();
+            if (cooldown != 11)
+            {
+                StartCoroutine(StopTime());
+                StartCoroutine(StopTimeCooldown(cooldown));
+            }
         }
 
         // if (Input.GetKeyDown(KeyCode.P))
