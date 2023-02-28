@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 0
   Name: ActiveUpgrade
-  icon: {fileID: 21300000, guid: 64fa056edd4d348fa8f9b005507c191c, type: 3}
+  icon: {fileID: 21300000, guid: 93943606783f94faa9bc97c168adf651, type: 3}

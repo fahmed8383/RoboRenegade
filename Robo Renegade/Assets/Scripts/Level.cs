@@ -9,7 +9,7 @@ public class Level : MonoBehaviour
     int passiveLevel = 0;
     static int activeLevel = 0;
     static int buffLevel = 0;
-    int evolutionLevel = 0;
+    int active2Level = 0;
     int numAbility = 0;
     [SerializeField] UpgradePanelManager upgradePanel;
 
@@ -60,8 +60,8 @@ public class Level : MonoBehaviour
                 PlayerMovement.moveSpeed += 0.3f;
                 // Debug.Log("buffLevel = " + buffLevel);
                 break;
-            case "EvolutionUpgrade":
-                evolutionLevel += 1;
+            case "Active2Upgrade":
+                active2Level += 1;
                 // Debug.Log("evolutionLevel = " + evolutionLevel);
                 break;
         }
