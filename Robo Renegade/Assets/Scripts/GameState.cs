@@ -8,7 +8,8 @@ public class GameState : MonoBehaviour
     public Transform playerTransform;
     public SpriteRenderer sprite;
     public GameObject gameOver;
-    
+    public GameObject gameWon;
+
     private static int maxHealth = 70;
     private static int health;
     private static bool invincible = false;
@@ -56,6 +57,12 @@ public class GameState : MonoBehaviour
         invincible = inv;
     }
 
+    public void WinGame()
+    {
+        Time.timeScale = 0f;
+        gameWon.SetActive(true);
+    }
+    
     private IEnumerator FlashDamageColor()
     {
         sprite.color = Color.red;

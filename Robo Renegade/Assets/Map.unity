@@ -2668,6 +2668,7 @@ MonoBehaviour:
   playerTransform: {fileID: 1236715306}
   sprite: {fileID: 0}
   gameOver: {fileID: 1813577292}
+  gameWon: {fileID: 1920424059}
   healthBar: {fileID: 2042604502}
 --- !u!114 &1236715310
 MonoBehaviour:
