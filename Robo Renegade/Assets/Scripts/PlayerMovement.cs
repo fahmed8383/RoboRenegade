@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
             int cooldown = 11 - Level.getActiveLevel();
             if (cooldown != 11)
             {
+                cooldown = Mathf.Max(5, cooldown);
                 StartCoroutine(StopTime());
                 StartCoroutine(StopTimeCooldown(cooldown));
             }
