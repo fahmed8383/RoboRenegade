@@ -7,7 +7,8 @@ public class GameState : MonoBehaviour
     public static GameState instance;
     public Transform playerTransform;
     public GameObject gameOver;
-    
+    public GameObject gameWon;
+
     private static int maxHealth = 70;
     private static int health;
     private static bool invincible = false;
@@ -52,5 +53,11 @@ public class GameState : MonoBehaviour
     public void SetInvincible(bool inv)
     {
         invincible = inv;
+    }
+
+    public void WinGame()
+    {
+        Time.timeScale = 0f;
+        gameWon.SetActive(true);
     }
 }

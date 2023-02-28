@@ -139,6 +139,11 @@ public class enemyScript : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("EnemyDeath");
         DropEXP();
+        if (gameObject.name == "BigRobo(Clone)")
+        {
+            target.GetComponent<GameState>().WinGame();
+        }
+        
         Destroy(gameObject);
     }
 

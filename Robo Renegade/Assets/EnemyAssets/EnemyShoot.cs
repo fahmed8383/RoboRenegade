@@ -51,6 +51,6 @@ public class EnemyShoot : MonoBehaviour
 
         Instantiate(bulletPrefab, firingPoint.position, bulletRotation);
 
-        Debug.Log("bullet: " + target.position);
+        //Debug.Log("bullet: " + target.position);
     }
 }
