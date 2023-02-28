@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
         int diff = spawner.GetComponent<SpawnerScript>().difficulty;
-        if (minutes == 1)
+        if (minutes == 5)
         {
             if (diff == 1)
             {
@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
                 Debug.Log("boss and hard diff");
             }
         }
-        else if (minutes == 0 && seconds > 29)
+        else if (minutes == 2 && seconds > 29)
         {
             if (diff == 0)
             {

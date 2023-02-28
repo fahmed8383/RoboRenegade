@@ -2666,7 +2666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1236715306}
-  sprite: {fileID: 0}
+  sprite: {fileID: 1236715305}
   gameOver: {fileID: 1813577292}
   gameWon: {fileID: 1920424059}
   healthBar: {fileID: 2042604502}
