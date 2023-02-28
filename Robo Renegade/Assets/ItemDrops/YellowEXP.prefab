@@ -137,4 +137,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6407782156454279435}
-  PointsGain: 25
+  PointsGain: 1000
