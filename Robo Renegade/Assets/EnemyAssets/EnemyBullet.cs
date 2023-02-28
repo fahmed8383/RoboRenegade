@@ -37,7 +37,7 @@ public class EnemyBullet : MonoBehaviour
         // Debug.Log("Collision", collision.gameObject);
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("PlayerCollision");
+            // Debug.Log("PlayerCollision");
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Enemy"))

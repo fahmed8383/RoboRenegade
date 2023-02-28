@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private bool dodging = false;
     private bool dodgeValid = true;
 
+    Level level;
+
     // Update is called once per frame
     void Update()
     {
@@ -38,6 +40,14 @@ public class PlayerMovement : MonoBehaviour
             gs.TakeDamage(1);
             FindObjectOfType<AudioManager>().Play("Damage");
         }
+
+        // if (Input.GetKeyDown(KeyCode.P))
+        // {
+        //     Debug.Log("pressed P");
+        //     level = GetComponent<Level>();
+        //     level.AddExperience(1000);
+        //     Debug.Log("called level");
+        // }
 
         movement = Vector2.ClampMagnitude(movement, 1);
 
