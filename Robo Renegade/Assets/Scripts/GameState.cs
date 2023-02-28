@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
+    public static GameState instance;
+    public Transform playerTransform;
+    public SpriteRenderer sprite;
+    public GameObject gameOver;
+    public GameObject gameWon;
 
     private static int maxHealth = 70;
     private static int health;
@@ -23,9 +28,15 @@ public class GameState : MonoBehaviour
     {
         if(!invincible)
         {
-            health -= damage;
+            health = Mathf.Max(0, health - damage);
             healthBar.SetHealth(health);
+            StartCoroutine(FlashDamageColor());
             FindObjectOfType<AudioManager>().Play("Damage");
+        }
+        if(health == 0)
+        {
+            Time.timeScale = 0f;
+            gameOver.SetActive(true);
         }
     }
 
@@ -35,9 +46,28 @@ public class GameState : MonoBehaviour
         health = Mathf.Min(maxHealth, health + hpGain);
         healthBar.SetHealth(health);
     }
+
+    private void Awake()
+    {
+        instance = this;   
+    }
     
     public void SetInvincible(bool inv)
     {
         invincible = inv;
     }
+
+    public void WinGame()
+    {
+        Time.timeScale = 0f;
+        gameWon.SetActive(true);
+    }
+    
+    private IEnumerator FlashDamageColor()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+    }
+
 }

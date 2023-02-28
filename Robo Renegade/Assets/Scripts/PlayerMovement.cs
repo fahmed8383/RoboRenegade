@@ -5,15 +5,17 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float moveSpeed = 5f;
+    public static float moveSpeed = 5f;
     public Rigidbody2D rb;
-    public SpriteRenderer sprite;
     public Animator animator;
     public GameState gs;
 
     private Vector2 movement;
     private bool dodging = false;
     private bool dodgeValid = true;
+    private bool timeStopValid = true;
+
+    Level level;
 
     // Update is called once per frame
     void Update()
@@ -32,12 +34,23 @@ public class PlayerMovement : MonoBehaviour
             Invoke("ResetDodgeTimer", 2);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Q) && timeStopValid)
         {
-            StartCoroutine(FlashDamageColor());
-            gs.TakeDamage(1);
-            FindObjectOfType<AudioManager>().Play("Damage");
+            int cooldown = 11 - Level.getActiveLevel();
+            if (cooldown != 11)
+            {
+                StartCoroutine(StopTime());
+                StartCoroutine(StopTimeCooldown(cooldown));
+            }
         }
+
+        // if (Input.GetKeyDown(KeyCode.P))
+        // {
+        //     Debug.Log("pressed P");
+        //     level = GetComponent<Level>();
+        //     level.AddExperience(1000);
+        //     Debug.Log("called level");
+        // }
 
         movement = Vector2.ClampMagnitude(movement, 1);
 
@@ -66,18 +79,28 @@ public class PlayerMovement : MonoBehaviour
         dodgeValid = true;
     }
 
-    private IEnumerator FlashDamageColor()
+    private IEnumerator StopTime()
     {
-        sprite.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        sprite.color = Color.white;
+        Time.timeScale = 0.1f;
+        animator.speed = 10f;
+        moveSpeed = moveSpeed*10;
+        yield return new WaitForSeconds(0.2f);
+        Time.timeScale = 1f;
+        animator.speed = 1f;
+        moveSpeed = moveSpeed / 10;
+    }
+
+    private IEnumerator StopTimeCooldown(int cooldown)
+    {
+        timeStopValid = false;
+        yield return new WaitForSeconds(cooldown);
+        timeStopValid = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "EnemyBullet")
         {
-            StartCoroutine(FlashDamageColor());
             gs.TakeDamage(1);
         }
         // if (collision.gameObject.CompareTag("PlayerBullet")){
