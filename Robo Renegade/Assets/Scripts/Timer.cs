@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
                 Debug.Log("boss and hard diff");
             }
         }
-        else if (minutes == 2 && seconds > 29)
+        else if (minutes == 1)
         {
             if (diff == 0)
             {
