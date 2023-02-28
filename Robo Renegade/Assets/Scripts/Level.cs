@@ -6,10 +6,10 @@ public class Level : MonoBehaviour
 {
     int level = 1;
     int experience = 0;
-    int passiveLevel = 0;
+    static int passiveLevel = 0;
     static int activeLevel = 0;
     static int buffLevel = 0;
-    int active2Level = 0;
+    static int active2Level = 0;
     int numAbility = 0;
     [SerializeField] UpgradePanelManager upgradePanel;
 
@@ -70,7 +70,7 @@ public class Level : MonoBehaviour
         // upgrades.Remove(upgradeData);
     }
 
-    public int getPassiveLevel() {
+    public static int getPassiveLevel() {
         return passiveLevel;
     }
 
@@ -78,8 +78,12 @@ public class Level : MonoBehaviour
         return activeLevel;
     }
 
-    public int getEvolutionLevel() {
-        return passiveLevel;
+    public static int getActive2Level() {
+        return active2Level;
+    }
+
+    public static int getBuffLevel() {
+        return buffLevel;
     }
 
     public void CheckLevelUp() 
