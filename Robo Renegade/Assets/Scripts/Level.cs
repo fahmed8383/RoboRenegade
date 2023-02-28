@@ -103,6 +103,7 @@ public class Level : MonoBehaviour
         upgradePanel.OpenPanel(selectedUpgrades);
         experience -= TO_LEVEL_UP;
         level += 1;
+        FindObjectOfType<AudioManager>().Play("LevelUp");
     }
 
     public List<UpgradeData> GetUpgrades(int count) 
