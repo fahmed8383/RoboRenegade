@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UpgradePanelManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class UpgradePanelManager : MonoBehaviour
 
     [SerializeField] List<UpgradeButton> upgradeButtons;
     List<UpgradeData> upgradeChoices;
+
+    [SerializeField] List<TMP_Text> upgradeTexts; 
 
     private void Awake()
     {
@@ -30,6 +33,21 @@ public class UpgradePanelManager : MonoBehaviour
         {
             upgradeButtons[i].gameObject.SetActive(true);
             upgradeButtons[i].Set(upgradeDatas[i]);
+
+            switch (upgradeDatas[i].name) {
+            case "PassiveUpgrade":
+                upgradeTexts[i].text = "(PASSIVE) A swarm of Nanobots attacks everything near you";
+                break;
+            case "ActiveUpgrade":
+                upgradeTexts[i].text = "(ACTIVE) Press Q to stop all enemies for a brief moment.";
+                break;
+            case "BuffUpgrade":
+                upgradeTexts[i].text = "(BUFF) Increase your movement speed.";
+                break;
+            case "Active2Upgrade":
+                upgradeTexts[i].text = "(ACTIVE) Press E to shoot Lasers all around you!";
+                break;
+            }   
         }
         upgradeChoices = upgradeDatas;
     }
