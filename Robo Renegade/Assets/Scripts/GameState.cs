@@ -6,6 +6,7 @@ public class GameState : MonoBehaviour
 {
     public static GameState instance;
     public Transform playerTransform;
+    public GameObject gameOver;
     
     private static int maxHealth = 70;
     private static int health;
@@ -28,6 +29,11 @@ public class GameState : MonoBehaviour
             health = Mathf.Max(0, health - damage);
             healthBar.SetHealth(health);
             FindObjectOfType<AudioManager>().Play("Damage");
+        }
+        if(health == 0)
+        {
+            Time.timeScale = 0f;
+            gameOver.SetActive(true);
         }
     }
 

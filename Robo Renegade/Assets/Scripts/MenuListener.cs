@@ -7,6 +7,18 @@ public class MenuListener : MonoBehaviour
 {
     public void StartGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Map");
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Map");
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Main");
     }
 }
