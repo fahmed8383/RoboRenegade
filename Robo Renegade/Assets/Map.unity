@@ -2523,9 +2523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1133dd9d00d3747a92c46a06c96826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   rb: {fileID: 1236715304}
-  sprite: {fileID: 1236715305}
   animator: {fileID: 1236715308}
   gs: {fileID: 1236715309}
 --- !u!50 &1236715304
@@ -2668,6 +2666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1236715306}
+  sprite: {fileID: 1236715305}
   gameOver: {fileID: 1813577292}
   healthBar: {fileID: 2042604502}
 --- !u!114 &1236715310
