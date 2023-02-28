@@ -78,6 +78,10 @@ public class enemyScript : MonoBehaviour
                 timer += Time.deltaTime;
             }
         }
+        if (collision.gameObject.CompareTag("LaserBeam")){
+            Debug.Log("LaserBeam Collision");
+            TakeDamage(20);
+        }
     }
 
     private IEnumerator FlashDamageColor()
@@ -94,8 +98,8 @@ public class enemyScript : MonoBehaviour
             TakeDamage(10);
         }
 
-        // if evolved laser collides with enemy, set frozen = true
-        //frozen = true;
+        // if evolved laser collides with enemy, call FreezeEnemy()
+        //FreezeEnemy()
     }
 
     void SetDirection()
@@ -139,6 +143,11 @@ public class enemyScript : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("EnemyDeath");
         DropEXP();
+        if (gameObject.name == "BigRobo(Clone)")
+        {
+            target.GetComponent<GameState>().WinGame();
+        }
+        
         Destroy(gameObject);
     }
 
@@ -154,7 +163,7 @@ public class enemyScript : MonoBehaviour
         {
             // drop exp item
             Instantiate(expItem, transform.position, transform.rotation);
-            Debug.Log("exp drop");
+            // Debug.Log("exp drop");
         }
     }
 }
