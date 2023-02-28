@@ -116,7 +116,11 @@ public class Level : MonoBehaviour
 
         for (int i = 0; i < count; i++) 
         {
-            upgradeList.Add(upgrades[Random.Range(0, upgrades.Count)]);
+            UpgradeData newUpgrade = upgrades[Random.Range(0, upgrades.Count)];
+            while (upgradeList.Contains(newUpgrade)) {
+                newUpgrade = upgrades[Random.Range(0, upgrades.Count)];
+            }
+            upgradeList.Add(newUpgrade);
         }
 
         return upgradeList;
@@ -126,77 +130,3 @@ public class Level : MonoBehaviour
         invSlots[numAbility].Set(ability);
     }
 }
-
-
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-
-// public class Level : MonoBehaviour
-// {
-//     int experience = 0;
-//     int level = 1;
-
-//     [SerializeField] List<UpgradeData> upgrades;
-//     [SerializeField] UpgradePanelManager upgradePanel;
-//     List<UpgradeData> selectedUpgrades;
-
-//     [SerializeField] List<UpgradeData> acquiredUpgrades;
-
-//     int TO_LEVEL_UP {
-//         get {
-//             return level * 1000;
-//         }
-//     }
-
-//     public void AddExperience(int amount) {
-//         Debug.Log("added " + amount + " exp");
-//         experience += amount;
-//         CheckLevelUp();
-//     }
-
-//     public void CheckLevelUp() {
-//         if(experience >= TO_LEVEL_UP) {
-//             LevelUp();
-//         }
-//     }
-
-//     public void Upgrade(int selectedUpgradeId)
-//     {
-//         UpgradeData upgradeData = selectedUpgrades[selectedUpgradeId];
-
-//         if (acquiredUpgrades == null) { acquiredUpgrades = new List<UpgradeData>(); }
-
-//         acquiredUpgrades.Add(upgradeData);
-//         upgrades.Remove(upgradeData);
-//     }
-
-//     private void LevelUp()
-//     {
-//         Debug.Log("LevelUp()");
-//         if (selectedUpgrades == null) { selectedUpgrades = new List<UpgradeData>(); }
-//         selectedUpgrades.Clear();
-//         selectedUpgrades.AddRange(GetUpgrades(3));
-
-//         upgradePanel.OpenPanel(selectedUpgrades);
-//         experience -= TO_LEVEL_UP;
-//         level += 1;
-//     }
-
-//     public List<UpgradeData> GetUpgrades(int count) 
-//     {
-//         List<UpgradeData> upgradeList = new List<UpgradeData>();
-
-//         if (count > upgrades.Count) 
-//         {
-//             count = upgrades.Count;
-//         }
-
-//         for (int i = 0; i < count; i++) 
-//         {
-//             upgradeList.Add(upgrades[Random.Range(0, upgrades.Count)]);
-//         }
-
-//         return upgradeList;
-//     }
-// }
