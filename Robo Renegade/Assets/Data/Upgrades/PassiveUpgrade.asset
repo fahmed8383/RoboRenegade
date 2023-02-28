@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 0
   Name: PassiveUpgrade
-  icon: {fileID: 21300000, guid: 2fdc4a9591743436d83b313ce4e9271b, type: 3}
+  icon: {fileID: 21300000, guid: 31476d59edb3341f19f65b9bc2b2ad0a, type: 3}

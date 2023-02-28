@@ -6,6 +6,11 @@ public class Level : MonoBehaviour
 {
     int level = 1;
     int experience = 0;
+    int passiveLevel = 0;
+    static int activeLevel = 0;
+    static int buffLevel = 0;
+    int active2Level = 0;
+    int numAbility = 0;
     [SerializeField] UpgradePanelManager upgradePanel;
 
     [SerializeField] List<UpgradeData> upgrades;
@@ -34,9 +39,47 @@ public class Level : MonoBehaviour
 
         if (acquiredUpgrades == null) { acquiredUpgrades = new List<UpgradeData>(); }
 
+        if (!acquiredUpgrades.Contains(upgradeData)) {
+            addItem(upgradeData);
+            numAbility += 1;
+        }
+
+        // Debug.Log("upgradeData.name = " + upgradeData.name);
+
+        switch (upgradeData.name) {
+            case "PassiveUpgrade":
+                passiveLevel += 1;
+                // Debug.Log("passiveLevel = " + passiveLevel);
+                break;
+            case "ActiveUpgrade":
+                activeLevel += 1;
+                // Debug.Log("activeLevel = " + activeLevel);
+                break;
+            case "BuffUpgrade":
+                buffLevel += 1;
+                PlayerMovement.moveSpeed += 0.3f;
+                // Debug.Log("buffLevel = " + buffLevel);
+                break;
+            case "Active2Upgrade":
+                active2Level += 1;
+                // Debug.Log("evolutionLevel = " + evolutionLevel);
+                break;
+        }
+
         acquiredUpgrades.Add(upgradeData);
-        upgrades.Remove(upgradeData);
-        addItem(upgradeData);
+        // upgrades.Remove(upgradeData);
+    }
+
+    public int getPassiveLevel() {
+        return passiveLevel;
+    }
+
+    public static int getActiveLevel() {
+        return activeLevel;
+    }
+
+    public int getEvolutionLevel() {
+        return passiveLevel;
     }
 
     public void CheckLevelUp() 
@@ -76,7 +119,7 @@ public class Level : MonoBehaviour
     }
 
     public void addItem(UpgradeData ability) {
-        invSlots[level-2].Set(ability);
+        invSlots[numAbility].Set(ability);
     }
 }
 

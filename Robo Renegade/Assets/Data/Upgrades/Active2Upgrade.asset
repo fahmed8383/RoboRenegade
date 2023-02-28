@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26de394f6b63f4338b71899e5e9ba822, type: 3}
-  m_Name: ActiveUpgarde
+  m_Name: Active2Upgrade
   m_EditorClassIdentifier: 
   upgradeType: 0
-  Name: ActiveUpgrade
-  icon: {fileID: 21300000, guid: 64fa056edd4d348fa8f9b005507c191c, type: 3}
+  Name: EvolutionUpgrade
+  icon: {fileID: 21300000, guid: 7c3d423c07d584d78818845d22f44561, type: 3}
