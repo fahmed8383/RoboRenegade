@@ -6,24 +6,24 @@ public class LaserGun : MonoBehaviour
 {
 
     [SerializeField] private GameObject laserBeam;
-    [SerializeField] private int cooldown = 5;
+    [SerializeField] private int cooldown;
     [SerializeField] private Transform firingPoint;
     [SerializeField] private int direction;
     private float laserTimer;
     private bool timeStopValid = true;
 
-
     void Start()
     {
-
     }
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E) && Level.getActive2Level() >= 1)
         {
-            if (timeStopValid)
+            cooldown = 11 - Level.getActiveLevel();
+            if (timeStopValid && cooldown != 11)
             {            
+                cooldown = Mathf.Max(5, cooldown);
                 Debug.Log("Laser beam shot");
                 ShootLaser();
                 StartCoroutine(StopTimeCooldown(cooldown));
