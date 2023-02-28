@@ -137,5 +137,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4465199462756283065}
-  moveSpeed: 4
-  EXPGain: 150
+  PointsGain: 2000

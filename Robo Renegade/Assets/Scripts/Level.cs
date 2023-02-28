@@ -11,6 +11,7 @@ public class Level : MonoBehaviour
     static int buffLevel = 0;
     static int active2Level = 0;
     int numAbility = 0;
+    public GameObject nanobots;
     [SerializeField] UpgradePanelManager upgradePanel;
 
     [SerializeField] List<UpgradeData> upgrades;
@@ -18,6 +19,11 @@ public class Level : MonoBehaviour
 
     [SerializeField] List<UpgradeData> acquiredUpgrades;
     [SerializeField] List<UpgradeButton> invSlots;
+
+    void Start()
+    {
+        nanobots.SetActive(false);
+    }
 
     int TO_LEVEL_UP
     {
@@ -48,7 +54,7 @@ public class Level : MonoBehaviour
 
         switch (upgradeData.name) {
             case "PassiveUpgrade":
-                passiveLevel += 1;
+                LevelUpPassive();
                 // Debug.Log("passiveLevel = " + passiveLevel);
                 break;
             case "ActiveUpgrade":
@@ -129,5 +135,18 @@ public class Level : MonoBehaviour
 
     public void addItem(UpgradeData ability) {
         invSlots[numAbility].Set(ability);
+    }
+
+    void LevelUpPassive()
+    {
+        if (passiveLevel == 0)
+        {
+            nanobots.SetActive(true);
+        }
+        else
+        {
+            nanobots.GetComponent<NanobotScript>().dmg += 5;
+        }
+        passiveLevel += 1;
     }
 }
