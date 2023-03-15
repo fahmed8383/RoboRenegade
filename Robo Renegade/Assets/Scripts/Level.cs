@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Level : MonoBehaviour
@@ -19,6 +20,7 @@ public class Level : MonoBehaviour
 
     [SerializeField] List<UpgradeData> acquiredUpgrades;
     [SerializeField] List<UpgradeButton> invSlots;
+    [SerializeField] TextMeshProUGUI levelText;
 
     void Start()
     {
@@ -116,6 +118,7 @@ public class Level : MonoBehaviour
         upgradePanel.OpenPanel(selectedUpgrades);
         experience -= TO_LEVEL_UP;
         level += 1;
+        levelText.text = "Level: " + level;
         FindObjectOfType<AudioManager>().Play("LevelUp");
     }
 
