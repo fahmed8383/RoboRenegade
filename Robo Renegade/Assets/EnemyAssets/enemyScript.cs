@@ -79,7 +79,7 @@ public class enemyScript : MonoBehaviour
             }
         }
         if (collision.gameObject.CompareTag("LaserBeam")){
-            Debug.Log("LaserBeam Collision");
+            // Debug.Log("LaserBeam Collision");
             TakeDamage(20);
         }
     }

@@ -20,15 +20,16 @@ public class LaserGun : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.E) && Level.getActive2Level() >= 1)
         {
-            cooldown = 11 - Level.getActiveLevel();
+            cooldown = 11 - Level.getActive2Level();
             if (timeStopValid && cooldown != 11)
-            {            
+            {
                 cooldown = Mathf.Max(5, cooldown);
-                Debug.Log("Laser beam shot");
+                // Debug.Log("Laser beam shot");
                 ShootLaser();
                 StartCoroutine(StopTimeCooldown(cooldown));
             }
         }
+        
     }
 
     private IEnumerator StopTimeCooldown(int cooldown)
