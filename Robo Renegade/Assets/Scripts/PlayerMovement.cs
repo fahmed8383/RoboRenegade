@@ -82,13 +82,65 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator StopTime()
     {
-        Time.timeScale = 0.1f;
-        animator.speed = 10f;
-        moveSpeed = moveSpeed*10;
-        yield return new WaitForSeconds(0.2f);
-        Time.timeScale = 1f;
-        animator.speed = 1f;
-        moveSpeed = moveSpeed / 10;
+        this.GetComponent<SpawnerScript>().canSpawn = false;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.GetComponent<enemyScript>().moveSpeed = 0;
+            enemy.GetComponent<enemyScript>().anim.speed = 0;
+            EnemyShoot enemyShoot;
+            if(enemy.TryGetComponent<EnemyShoot>(out enemyShoot))
+            {
+                enemyShoot.canShoot = false;
+            }
+        }
+
+        GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("PlayerBullet");
+        foreach (GameObject bullet in playerBullets)
+        {
+            bullet.GetComponent<PlayerBullet>().speed = 0;
+        }
+
+        GameObject.Find("FiringPoint").GetComponent<Gun2D>().canShoot = false;
+
+        GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+        foreach (GameObject bullet in enemyBullets)
+        {
+            bullet.GetComponent<EnemyBullet>().speed = 0;
+        }
+
+        yield return new WaitForSeconds(3f);
+
+        this.GetComponent<SpawnerScript>().canSpawn = true;
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                enemy.GetComponent<enemyScript>().moveSpeed = 1f;
+                enemy.GetComponent<enemyScript>().anim.speed = 1f;
+                EnemyShoot enemyShoot;
+                if (enemy.TryGetComponent<EnemyShoot>(out enemyShoot))
+                {
+                    enemyShoot.canShoot = true;
+                }
+            }
+        }
+        foreach (GameObject bullet in playerBullets)
+        {
+            if (bullet != null)
+            {
+                bullet.GetComponent<PlayerBullet>().speed = 10f;
+            }
+        }
+        GameObject.Find("FiringPoint").GetComponent<Gun2D>().canShoot = true;
+        foreach (GameObject bullet in enemyBullets)
+        {
+            if (bullet != null)
+            {
+                bullet.GetComponent<EnemyBullet>().speed = 10f;
+            }
+        }
     }
 
     private IEnumerator StopTimeCooldown(int cooldown)

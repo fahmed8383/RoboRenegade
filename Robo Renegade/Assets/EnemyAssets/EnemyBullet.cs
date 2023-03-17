@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     [Range(1, 10)]
-    [SerializeField] private float speed = 2f;
+    [SerializeField] public float speed = 2f;
 
     [Range(1, 10)]
-    [SerializeField] private float lifeTime = 5f;
+    [SerializeField] private float lifeTime = 20f;
 
     private Rigidbody2D rb;
 

@@ -15,6 +15,7 @@ public class Gun2D : MonoBehaviour
     [Range(0.1f, 1f)]
     [SerializeField] private float fireRate = 0.5f;
 
+    public bool canShoot = true;
 
     private Rigidbody2D rb;
     private float mx;
@@ -59,7 +60,7 @@ public class Gun2D : MonoBehaviour
         //     }
         // }
 
-        if (fireTimer <= 0f)
+        if (canShoot && fireTimer <= 0f)
         {
             Shoot();
             fireTimer = fireRate;

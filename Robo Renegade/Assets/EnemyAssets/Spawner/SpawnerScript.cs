@@ -18,6 +18,8 @@ public class SpawnerScript : MonoBehaviour
     public GameObject enemyMedium;
     public GameObject enemyBoss;
 
+    public bool canSpawn = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,14 +30,17 @@ public class SpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer < spawnInterval)
+        if (canSpawn)
         {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            spawnEnemy();
-            timer = 0;
+            if (timer < spawnInterval)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                spawnEnemy();
+                timer = 0;
+            }
         }
     }
 
@@ -61,7 +66,8 @@ public class SpawnerScript : MonoBehaviour
     Vector3 getSpawnPosition()
     {
         float angle = Random.value * 2 * Mathf.PI;
-        Vector3 spawnPosition = new Vector3(radius * Mathf.Cos(angle), radius * Mathf.Sin(angle), 0);
+        Vector3 spawnPosition = new Vector3(this.transform.position.x + radius * Mathf.Cos(angle), this.transform.position.y + radius * Mathf.Sin(angle), this.transform.position.z);
+        Debug.Log(spawnPosition);
         return spawnPosition;
     }
 
