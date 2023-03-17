@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawner = GameObject.Find("Spawner");
+        spawner = GameObject.Find("Player");
     }
 
     // Update is called once per frame
