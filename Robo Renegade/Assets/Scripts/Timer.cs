@@ -29,7 +29,7 @@ public class Timer : MonoBehaviour
         {
             if (diff == 1)
             {
-                spawner.GetComponent<SpawnerScript>().difficulty = 2;
+                spawner.GetComponent<SpawnerScript>().setHard();
                 spawner.GetComponent<SpawnerScript>().spawnBoss();
                 timeText.color = Color.red;
                 Debug.Log("boss and hard diff");
@@ -39,7 +39,7 @@ public class Timer : MonoBehaviour
         {
             if (diff == 0)
             {
-                spawner.GetComponent<SpawnerScript>().difficulty = 1;
+                spawner.GetComponent<SpawnerScript>().setMedium();
                 Debug.Log("med diff");
             }
         }

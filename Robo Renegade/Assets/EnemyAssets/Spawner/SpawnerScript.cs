@@ -8,7 +8,9 @@ public class SpawnerScript : MonoBehaviour
     /// to be attached to pllayer as a child, player being at the center of the radius
     /// </summary>
 
-    public float spawnInterval;
+    public float interval1;
+    public float interval2;
+    private float spawnInterval;
     public float radius;
     public float mediumDiffChance = 0.5f; // chance of spawning meduim enemies in medium difficulty
     private float timer = 0;
@@ -21,6 +23,7 @@ public class SpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spawnInterval = interval1;
         difficulty = 0;
         spawnEnemy();
     }
@@ -43,13 +46,13 @@ public class SpawnerScript : MonoBehaviour
     {
         // determine difficulty based on game duration
 
-        if (difficulty == 0) // easy, before 2.5 min
+        if (difficulty == 0) // easy, before 1 min
         {
             spawnEasy(getSpawnPosition());
         }
-        else if (difficulty == 1) // medium, after 2.5 min till 5 min
+        else if (difficulty == 1) // medium, after 1 min till 5 min
         {
-            // possibly change spawnRate
+            
             spawnMedium(getSpawnPosition());
         }
         else // hard, after 5 min
@@ -92,5 +95,17 @@ public class SpawnerScript : MonoBehaviour
     public void spawnBoss()
     {
         Instantiate(enemyBoss, getSpawnPosition(), transform.rotation);
+    }
+
+    public void setMedium()
+    {
+        spawnInterval = interval2;
+        difficulty = 1;
+    }
+
+    public void setHard()
+    {
+        spawnInterval = interval2;
+        difficulty = 2;
     }
 }
