@@ -19,6 +19,7 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private float fireRate;
     private float fireTimer;
 
+    public bool canShoot = true;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class EnemyShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fireTimer <= 0f)
+        if (canShoot && fireTimer <= 0f)
         {
             Shoot();
             fireTimer = fireRate;
