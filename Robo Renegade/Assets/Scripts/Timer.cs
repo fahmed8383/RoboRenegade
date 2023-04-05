@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawner = GameObject.Find("Player");
+        spawner = GameObject.Find("Spawner");
     }
 
     // Update is called once per frame
@@ -23,6 +23,9 @@ public class Timer : MonoBehaviour
         float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+
+
 
         int diff = spawner.GetComponent<SpawnerScript>().difficulty;
         if (minutes == 5)

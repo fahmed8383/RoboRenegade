@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public GameState gs;
+    public GameObject spawner;
 
     private Vector2 movement;
     private bool dodging = false;
@@ -82,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator StopTime()
     {
-        this.GetComponent<SpawnerScript>().canSpawn = false;
+        spawner.GetComponent<SpawnerScript>().canSpawn = false;
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
@@ -102,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
             bullet.GetComponent<PlayerBullet>().speed = 0;
         }
 
-        GameObject.Find("FiringPoint").GetComponent<Gun2D>().canShoot = false;
+        //GameObject.Find("FiringPoint").GetComponent<Gun2D>().canShoot = false;
 
         GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
         foreach (GameObject bullet in enemyBullets)
@@ -112,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        this.GetComponent<SpawnerScript>().canSpawn = true;
+        spawner.GetComponent<SpawnerScript>().canSpawn = true;
         foreach (GameObject enemy in enemies)
         {
             if (enemy != null)
