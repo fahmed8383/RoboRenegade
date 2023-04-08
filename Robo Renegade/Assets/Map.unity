@@ -1619,6 +1619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1236715306}
     m_Modifications:
+    - target: {fileID: 6335876216099283170, guid: 780121e8c0f4c4b8daa30ade2d6f73f5, type: 3}
+      propertyPath: cooldownText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6335876217033832869, guid: 780121e8c0f4c4b8daa30ade2d6f73f5, type: 3}
       propertyPath: cooldownText
       value: 
@@ -1670,6 +1674,14 @@ PrefabInstance:
     - target: {fileID: 6335876217202480228, guid: 780121e8c0f4c4b8daa30ade2d6f73f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335876217816055491, guid: 780121e8c0f4c4b8daa30ade2d6f73f5, type: 3}
+      propertyPath: cooldownText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335876217983677778, guid: 780121e8c0f4c4b8daa30ade2d6f73f5, type: 3}
+      propertyPath: cooldownText
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780121e8c0f4c4b8daa30ade2d6f73f5, type: 3}
@@ -2963,7 +2975,6 @@ GameObject:
   - component: {fileID: 1236715311}
   - component: {fileID: 1236715310}
   - component: {fileID: 1236715312}
-  - component: {fileID: 1236715313}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2986,8 +2997,8 @@ MonoBehaviour:
   rb: {fileID: 1236715304}
   animator: {fileID: 1236715308}
   gs: {fileID: 1236715309}
-  spawner: {fileID: 0}
-  cooldownText: {fileID: 0}
+  spawner: {fileID: 1486472925}
+  cooldownText: {fileID: 1694426793}
 --- !u!50 &1236715304
 Rigidbody2D:
   serializedVersion: 4
@@ -3193,27 +3204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3c50819cc874d4c93af88637c149ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1236715313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1236715302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4475fe6f586d6f243bee0d6a4ff06b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interval1: 0
-  interval2: 0
-  radius: 12
-  mediumDiffChance: 0.5
-  difficulty: 0
-  enemyEasy: {fileID: 8527920932438423926, guid: 99b1795b30f1acb49990af60637a9028, type: 3}
-  enemyMedium: {fileID: 3140169113020536927, guid: 3c1e17dbdaad11743b2bde8fd4e3a496, type: 3}
-  enemyBoss: {fileID: 2284947948665037575, guid: 4bd853c00c40b484ab3e88f6d11f2d40, type: 3}
-  canSpawn: 1
 --- !u!1 &1284459663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3814,6 +3804,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c1a16627e6ee147826ccc000cea00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1486472925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4412381335747186342, guid: ec49cb61c55afd34381f73972d713933, type: 3}
+  m_PrefabInstance: {fileID: 1494877758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1494877758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3871,11 +3866,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4412381335747186341, guid: ec49cb61c55afd34381f73972d713933, type: 3}
       propertyPath: interval1
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4412381335747186341, guid: ec49cb61c55afd34381f73972d713933, type: 3}
       propertyPath: interval2
-      value: 2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4412381335747186342, guid: ec49cb61c55afd34381f73972d713933, type: 3}
       propertyPath: m_Name
