@@ -12,6 +12,7 @@ public class LaserGun : MonoBehaviour
     [SerializeField] private int direction;
     private float laserTimer;
     private bool timeStopValid = true;
+    private bool isEvolved = false;
     [SerializeField] TextMeshProUGUI cooldownText;
 
     void Start()
@@ -22,11 +23,15 @@ public class LaserGun : MonoBehaviour
     {
         float cooldownTimer = 0;
         if (Input.GetKeyUp(KeyCode.E) && Level.getActive2Level() >= 1)
+        // if (Input.GetKeyUp(KeyCode.E))
         {
             cooldown = 11 - Level.getActive2Level();
+            // cooldown = 2;
+            isEvolved = Level.getActive2Evolved();
             if (timeStopValid && cooldown != 11)
             {
                 cooldown = Mathf.Max(5, cooldown);
+                Debug.Log("evolved: " + isEvolved); 
                 cooldownTimer = cooldown;
                 // Debug.Log("Laser beam shot");
                 ShootLaser();
@@ -49,11 +54,23 @@ public class LaserGun : MonoBehaviour
         timeStopValid = true;
     }
 
+    private IEnumerator ShootSecondLaser(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Instantiate(laserBeam, firingPoint.position, Quaternion.Euler(0, 0, direction-45f));
+        FindObjectOfType<AudioManager>().Play("blaster_14");
+    }
+
     void ShootLaser()
     {
         Instantiate(laserBeam, firingPoint.position, Quaternion.Euler(0, 0, direction-90f));
         FindObjectOfType<AudioManager>().Play("blaster_14");
+
+        if (isEvolved == true) {
+            StartCoroutine(ShootSecondLaser(0f));
+        }
     }
+
 
     // [SerializeField] private float defDistance = 100f;
     // public Transform laserFirePoint;
