@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LaserGun : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LaserGun : MonoBehaviour
     [SerializeField] private int direction;
     private float laserTimer;
     private bool timeStopValid = true;
+    [SerializeField] TextMeshProUGUI cooldownText;
 
     void Start()
     {
@@ -18,18 +20,26 @@ public class LaserGun : MonoBehaviour
 
     void Update()
     {
+        float cooldownTimer = 0;
         if (Input.GetKeyUp(KeyCode.E) && Level.getActive2Level() >= 1)
         {
             cooldown = 11 - Level.getActive2Level();
             if (timeStopValid && cooldown != 11)
             {
                 cooldown = Mathf.Max(5, cooldown);
+                cooldownTimer = cooldown;
                 // Debug.Log("Laser beam shot");
                 ShootLaser();
                 StartCoroutine(StopTimeCooldown(cooldown));
             }
         }
-        
+        if (cooldownTimer > 0 && Level.getActive2Level() >= 1)
+        {
+            cooldownTimer -= Time.deltaTime;
+            cooldownText.text = "E: " + (int) cooldownTimer;
+        } else if (cooldownTimer <= 0 && Level.getActive2Level() >= 1) {
+            cooldownText.text = "E: READY";
+        }
     }
 
     private IEnumerator StopTimeCooldown(int cooldown)

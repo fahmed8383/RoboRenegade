@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,12 +16,14 @@ public class PlayerMovement : MonoBehaviour
     private bool dodging = false;
     private bool dodgeValid = true;
     private bool timeStopValid = true;
+    [SerializeField] TextMeshProUGUI cooldownText;
 
     Level level;
 
     // Update is called once per frame
     void Update()
     {
+        float cooldownTimer = 0;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         if (dodgeValid && Input.GetKeyDown(KeyCode.LeftShift))
@@ -41,9 +44,17 @@ public class PlayerMovement : MonoBehaviour
             if (cooldown != 11)
             {
                 cooldown = Mathf.Max(5, cooldown);
+                cooldownTimer = cooldown;
                 StartCoroutine(StopTime());
                 StartCoroutine(StopTimeCooldown(cooldown));
             }
+        }
+        if (cooldownTimer > 0 && Level.getActiveLevel() >= 1)
+        {
+            cooldownTimer -= Time.deltaTime;
+            cooldownText.text = "Q: " + (int) cooldownTimer;
+        } else if (cooldownTimer <= 0 && Level.getActiveLevel() >= 1) {
+            cooldownText.text = "Q: READY";
         }
 
         // if (Input.GetKeyDown(KeyCode.P))
