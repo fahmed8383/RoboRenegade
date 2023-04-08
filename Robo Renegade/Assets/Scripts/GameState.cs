@@ -13,6 +13,7 @@ public class GameState : MonoBehaviour
     private static int maxHealth = 70;
     private static int health;
     public static bool invincible = false;
+    private static int newHealth = 30;
 
     public HealthBar healthBar;
 
@@ -70,4 +71,11 @@ public class GameState : MonoBehaviour
         sprite.color = Color.white;
     }
 
+    public void UpdateMaxHealth()
+    {
+        //slider
+        healthBar.SetMaxHealth(maxHealth + newHealth);
+        //game state
+        maxHealth += newHealth;
+    }
 }
