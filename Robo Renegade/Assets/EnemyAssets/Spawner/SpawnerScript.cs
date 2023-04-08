@@ -70,7 +70,7 @@ public class SpawnerScript : MonoBehaviour
     {
         float angle = Random.value * 2 * Mathf.PI;
         Vector3 spawnPosition = new Vector3(this.transform.position.x + radius * Mathf.Cos(angle), this.transform.position.y + radius * Mathf.Sin(angle), this.transform.position.z);
-        Debug.Log(spawnPosition);
+        //Debug.Log(spawnPosition);
         return spawnPosition;
     }
 
@@ -111,7 +111,7 @@ public class SpawnerScript : MonoBehaviour
 
     public void setHard()
     {
-        spawnInterval = interval2;
+        //spawnInterval = interval2;
         difficulty = 2;
     }
 }
