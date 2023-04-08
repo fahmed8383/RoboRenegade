@@ -8,11 +8,13 @@ public class Level : MonoBehaviour
     int level = 1;
     int experience = 0;
     static int passiveLevel;
+    static int shieldLevel;
     static int activeLevel;
     static int buffLevel;
     static int active2Level;
     int numAbility = 0;
     public GameObject nanobots;
+    public GameObject shield;
     [SerializeField] UpgradePanelManager upgradePanel;
 
     [SerializeField] List<UpgradeData> upgrades;
@@ -26,7 +28,9 @@ public class Level : MonoBehaviour
     {
         
         nanobots.SetActive(false);
+        shield.SetActive(false);
         passiveLevel = 0;
+        shieldLevel = 0;
         activeLevel = 0;
         buffLevel = 0;
         active2Level = 0;
@@ -64,6 +68,10 @@ public class Level : MonoBehaviour
             case "PassiveUpgrade":
                 LevelUpPassive();
                 // Debug.Log("passiveLevel = " + passiveLevel);
+                break;
+            case "ShieldUpgrade":
+                LevelUpShield();
+                // Debug.Log("shieldLevel = " + shieldLevel);
                 break;
             case "ActiveUpgrade":
                 activeLevel += 1;
@@ -151,14 +159,29 @@ public class Level : MonoBehaviour
     {
         if (passiveLevel == 0)
         {
-            Debug.Log("nanobots activated");
+            //Debug.Log("nanobots activated");
             nanobots.SetActive(true);
         }
         else
         {
-            Debug.Log("nanobots levelup");
+            //Debug.Log("nanobots levelup");
             nanobots.GetComponent<NanobotScript>().dmg += 5;
         }
         passiveLevel += 1;
+    }
+
+    void LevelUpShield()
+    {
+        if (shieldLevel == 0)
+        {
+            Debug.Log("shield activated");
+            shield.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("shield levelup");
+            shield.GetComponent<shieldScript>().duration += shield.GetComponent<shieldScript>().upgrade_duration;
+        }
+        shieldLevel += 1;
     }
 }

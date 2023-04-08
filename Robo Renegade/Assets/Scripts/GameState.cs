@@ -12,7 +12,7 @@ public class GameState : MonoBehaviour
 
     private static int maxHealth = 70;
     private static int health;
-    private static bool invincible = false;
+    public static bool invincible = false;
 
     public HealthBar healthBar;
 

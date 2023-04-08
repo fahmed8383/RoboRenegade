@@ -47,6 +47,9 @@ public class UpgradePanelManager : MonoBehaviour
             case "Active2Upgrade":
                 upgradeTexts[i].text = "(ACTIVE) Press E to shoot Lasers all around you!";
                 break;
+            case "ShieldUpgrade":
+                upgradeTexts[i].text = "(PASSIVE) Acquire an invincible shield that appears periodically";
+                break;
             }   
         }
         upgradeChoices = upgradeDatas;
