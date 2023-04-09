@@ -95,7 +95,7 @@ public class enemyScript : MonoBehaviour
     {
         // enemy possibly takes damage
         if (collision.gameObject.CompareTag("PlayerBullet")){
-            TakeDamage(10);
+            TakeDamage(10 + Level.getPlayerLevel()/5);
         }
 
         // if evolved laser collides with enemy, call FreezeEnemy()
