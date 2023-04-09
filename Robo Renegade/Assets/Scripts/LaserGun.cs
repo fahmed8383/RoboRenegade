@@ -31,7 +31,7 @@ public class LaserGun : MonoBehaviour
             if (timeStopValid && cooldown != 11)
             {
                 cooldown = Mathf.Max(5, cooldown);
-                Debug.Log("evolved: " + isEvolved); 
+                // Debug.Log("evolved: " + isEvolved); 
                 cooldownTimer = cooldown;
                 // Debug.Log("Laser beam shot");
                 ShootLaser();

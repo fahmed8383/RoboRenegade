@@ -89,7 +89,7 @@ public class Level : MonoBehaviour
                 // Debug.Log("buffLevel = " + buffLevel);
                 break;
             case "Active2Upgrade":
-                if (active2Level + 1 >= lvlThreshold) {
+                if (active2Level + 1 >= lvlThreshold && passiveLevel >= lvlThreshold) {
                     active2Evolved = true;
                     Debug.Log("Laser Beam Evolved");
                     break;
