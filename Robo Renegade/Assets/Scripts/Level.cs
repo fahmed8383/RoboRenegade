@@ -12,6 +12,11 @@ public class Level : MonoBehaviour
     static int activeLevel;
     static int buffLevel;
     static int active2Level;
+
+    static bool active2Evolved;                
+    int lvlThreshold = 2;
+
+
     int numAbility = 0;
     public GameObject nanobots;
     public GameObject shield;
@@ -34,6 +39,7 @@ public class Level : MonoBehaviour
         activeLevel = 0;
         buffLevel = 0;
         active2Level = 0;
+        active2Evolved = false;
         Debug.Log(active2Level);
     }
 
@@ -83,9 +89,13 @@ public class Level : MonoBehaviour
                 // Debug.Log("buffLevel = " + buffLevel);
                 break;
             case "Active2Upgrade":
+                if (active2Level + 1 >= lvlThreshold) {
+                    active2Evolved = true;
+                    Debug.Log("Laser Beam Evolved");
+                    break;
+                }
                 active2Level += 1;
-                Debug.Log(active2Level);
-                // Debug.Log("evolutionLevel = " + evolutionLevel);
+                // Debug.Log(active2Level);
                 break;
         }
 
@@ -103,6 +113,10 @@ public class Level : MonoBehaviour
 
     public static int getActive2Level() {
         return active2Level;
+    }
+
+    public static bool getActive2Evolved() {
+        return active2Evolved;
     }
 
     public static int getBuffLevel() {
