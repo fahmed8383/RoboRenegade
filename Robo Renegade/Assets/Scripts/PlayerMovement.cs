@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float cooldownTimer = 0;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         if (dodgeValid && Input.GetKeyDown(KeyCode.LeftShift))
@@ -44,17 +43,15 @@ public class PlayerMovement : MonoBehaviour
             if (cooldown != 11)
             {
                 cooldown = Mathf.Max(5, cooldown);
-                cooldownTimer = cooldown;
                 StartCoroutine(StopTime());
                 StartCoroutine(StopTimeCooldown(cooldown));
             }
         }
-        if (cooldownTimer > 0 && Level.getActiveLevel() >= 1)
-        {
-            cooldownTimer -= Time.deltaTime;
-            cooldownText.text = "Q: " + (int) cooldownTimer;
-        } else if (cooldownTimer <= 0 && Level.getActiveLevel() >= 1) {
+        if (Level.getActiveLevel() >= 1 && timeStopValid) {
             cooldownText.text = "Q: READY";
+        } else if (Level.getActiveLevel() >= 1 && !timeStopValid)
+        {
+            cooldownText.text = "Q: On Cooldown";
         }
 
         // if (Input.GetKeyDown(KeyCode.P))
