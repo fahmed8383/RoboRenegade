@@ -21,7 +21,6 @@ public class LaserGun : MonoBehaviour
 
     void Update()
     {
-        float cooldownTimer = 0;
         if (Input.GetKeyUp(KeyCode.E) && Level.getActive2Level() >= 1)
         // if (Input.GetKeyUp(KeyCode.E))
         {
@@ -32,18 +31,16 @@ public class LaserGun : MonoBehaviour
             {
                 cooldown = Mathf.Max(5, cooldown);
                 Debug.Log("evolved: " + isEvolved); 
-                cooldownTimer = cooldown;
                 // Debug.Log("Laser beam shot");
                 ShootLaser();
                 StartCoroutine(StopTimeCooldown(cooldown));
             }
         }
-        if (cooldownTimer > 0 && Level.getActive2Level() >= 1)
+        if (timeStopValid && Level.getActive2Level() >= 1)
         {
-            cooldownTimer -= Time.deltaTime;
-            cooldownText.text = "E: " + (int) cooldownTimer;
-        } else if (cooldownTimer <= 0 && Level.getActive2Level() >= 1) {
             cooldownText.text = "E: READY";
+        } else if (!timeStopValid && Level.getActive2Level() >= 1) {
+            cooldownText.text = "E: On Cooldown";
         }
     }
 
