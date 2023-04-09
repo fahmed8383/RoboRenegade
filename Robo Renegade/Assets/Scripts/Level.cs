@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    int level = 1;
+    static int level = 1;
     int experience = 0;
     static int passiveLevel;
     static int shieldLevel;
@@ -121,6 +121,11 @@ public class Level : MonoBehaviour
 
     public static int getBuffLevel() {
         return buffLevel;
+    }
+
+    public static int getPlayerLevel()
+    {
+        return level;
     }
 
     public void CheckLevelUp() 
