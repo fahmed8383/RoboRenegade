@@ -14,8 +14,7 @@ public class shieldScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 0;
-        GameState.invincible = true;
+        timer = cooldown;
         sprite.color = new Color(1f, 1f, 1f, .5f);
     }
 
