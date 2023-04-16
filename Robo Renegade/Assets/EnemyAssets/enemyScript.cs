@@ -66,7 +66,7 @@ public class enemyScript : MonoBehaviour
             if (timer == 0)
             {
                 collision.attachedRigidbody.gameObject.GetComponent<GameState>().TakeDamage(atk);
-                //Debug.Log("Damage");
+                Debug.Log("Damage");
                 timer += Time.deltaTime;
             }
             else if(timer >= atkInterval)

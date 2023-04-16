@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public GameState gs;
     public GameObject spawner;
+    public SpriteRenderer shield;
 
     private Vector2 movement;
     private bool dodging = false;
@@ -119,7 +120,12 @@ public class PlayerMovement : MonoBehaviour
             bullet.GetComponent<EnemyBullet>().speed = 0;
         }
 
+        GameState.invincible = true;
         yield return new WaitForSeconds(3f);
+        if (!shield.enabled || Level.shieldLevel == 0)
+        {
+            GameState.invincible = false;
+        }
 
         spawner.GetComponent<SpawnerScript>().canSpawn = true;
         foreach (GameObject enemy in enemies)

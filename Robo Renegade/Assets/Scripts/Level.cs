@@ -8,7 +8,7 @@ public class Level : MonoBehaviour
     static int level = 1;
     int experience = 0;
     static int passiveLevel;
-    static int shieldLevel;
+    public static int shieldLevel;
     static int activeLevel;
     static int buffLevel;
     static int active2Level;
@@ -31,7 +31,8 @@ public class Level : MonoBehaviour
 
     void Start()
     {
-        
+        level = 1;
+        experience = 0;
         nanobots.SetActive(false);
         shield.SetActive(false);
         passiveLevel = 0;
@@ -53,6 +54,7 @@ public class Level : MonoBehaviour
 
     public void AddExperience(int amount) 
     {
+        // Debug.Log("exp gain");
         experience += amount;
         CheckLevelUp();
     }
@@ -132,6 +134,7 @@ public class Level : MonoBehaviour
     {
         if (experience >= TO_LEVEL_UP)
         {
+            Debug.Log("lvl up");
             LevelUp();
         }
     }

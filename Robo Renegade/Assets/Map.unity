@@ -3135,6 +3135,7 @@ MonoBehaviour:
   animator: {fileID: 1236715308}
   gs: {fileID: 1236715309}
   spawner: {fileID: 1486472925}
+  shield: {fileID: 700268420}
   cooldownText: {fileID: 1694426793}
 --- !u!50 &1236715304
 Rigidbody2D:
