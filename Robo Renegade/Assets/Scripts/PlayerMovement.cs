@@ -121,7 +121,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         GameState.invincible = true;
+        shieldScript.toggleLockInvDisable();
         yield return new WaitForSeconds(3f);
+        shieldScript.toggleLockInvDisable();
         if (!shield.enabled || Level.shieldLevel == 0)
         {
             GameState.invincible = false;
